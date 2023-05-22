@@ -18,16 +18,10 @@ const sendMessage = () => {
   // If no message is present, return
   if (!message.value.length || !socket.connected) return;
 
+  // Emit client signal to server
   socket.emit("chat-message", {
     text: message.value,
   })
-
-  // Add message to messages array
-  messages.value.push({
-    type: "message-personal",
-    displayname: storeToRefs(authStore).user.value.displayname,
-    text: message.value,
-  });
 
   // Scroll to bottom of container
   document.getElementById("chat").scrollTop =
@@ -37,8 +31,12 @@ const sendMessage = () => {
   message.value = "";
 };
 
+// On server response, add message to stack
 socket.on("chat-message", (e) => {
-  console.log(e)
+  messages.value.push(e)  
+  // Scroll to bottom of container
+  document.getElementById("chat").scrollTop =
+    document.getElementById("chat").scrollHeight;
 })
 </script>
 
