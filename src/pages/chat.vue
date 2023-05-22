@@ -1,6 +1,5 @@
 <script setup>
-import { socket } from "../socket";
-import Chat from "../components/chat.vue";
+import Chat from "../components/Chat.vue";
 </script>
 
 <template>
@@ -8,3 +7,9 @@ import Chat from "../components/chat.vue";
     <Chat  />
   </section>
 </template>
+
+<style>
+#page-chat {
+    @apply h-screen grid place-items-center;
+}
+</style>
