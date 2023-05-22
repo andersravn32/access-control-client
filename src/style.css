@@ -19,5 +19,5 @@
 }
 
 .btn {
-  @apply px-6 py-2 bg-sky-300 hover:bg-sky-400 font-bold text-white text-center transition-all duration-150;
+  @apply px-6 py-2 bg-sky-400 hover:bg-sky-500 font-bold text-white text-center transition-all duration-150;
 }
