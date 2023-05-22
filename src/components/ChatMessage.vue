@@ -15,6 +15,7 @@ defineProps({
 
   <li v-if="message.type == 'message-foreign'" class="chat-message" :class="message.type">
     <div class="flex-shrink-0 h-10 w-10 bg-sky-400 text-white rounded-full grid place-items-center font-bold text-2xl">{{ message.displayname[0] }}</div>
+    <p>{{ message.text }}</p>
   </li>
 
   <li v-if="message.type == 'message-announcement'" class="chat-message" :class="message.type">
