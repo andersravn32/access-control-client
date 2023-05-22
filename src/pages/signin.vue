@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import useAuthStore from "../stores/authStore";
+import { useRouter } from "vue-router";
 
 const authStore = useAuthStore();
+const router = useRouter();
 
 const credentials = ref({
   email: null,
@@ -15,7 +17,11 @@ const signin = async () => {
     credentials.value.password
   );
 
-  console.log(data, errors);
+  if (!data){
+    return;
+  }
+
+  router.push("/chat");
 };
 </script>
 
@@ -42,6 +48,7 @@ const signin = async () => {
         />
       </div>
       <button class="btn w-full">Log på</button>
+      <router-link class="block text-sm underline" to="/">Tilbage</router-link>
     </form>
   </section>
 </template>

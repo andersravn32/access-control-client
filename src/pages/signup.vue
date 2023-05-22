@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from "vue";
 import useAuthStore from "../stores/authStore";
+import { useRouter } from "vue-router";
 
 const authStore = useAuthStore();
+const router = useRouter();
 
 const credentials = ref({
   displayname: null,
@@ -17,7 +19,11 @@ const signup = async () => {
     credentials.value.displayname
   );
 
-  console.log(data, errors);
+  if (!data){
+    return;
+  }
+
+  router.push("/chat");
 };
 </script>
 
@@ -38,6 +44,7 @@ const signup = async () => {
         <input v-model="credentials.password" type="password" placeholder="Indtast password" required />
       </div>
       <button class="btn w-full">Opret konto</button>
+      <router-link class="block text-sm underline" to="/">Tilbage</router-link>
     </form>
   </section>
 </template>
